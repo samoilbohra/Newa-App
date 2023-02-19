@@ -8,12 +8,11 @@ export default function App() {
     return (
 
       <div>
-        <Router>
           <Navbar />
           <Routes>
-            <Route path="/News-App" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
+            <Route exact path="/" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
             <Route path="/about" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
-            <Route path="business" element={<NewsComponent key={"business"} pageSize={9} country={"in"} category="business" />} />
+            <Route path="/business" element={<NewsComponent key={"business"} pageSize={9} country={"in"} category="business" />} />
             <Route path="/entertainment" element={<NewsComponent key={"entertainment"} pageSize={9} country={"in"} category="entertainment" />} />
             <Route path="/general" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
             <Route path="/health" element={<NewsComponent key={"health"} pageSize={9} country={"in"} category="health" />} />
@@ -23,7 +22,6 @@ export default function App() {
 
 
           </Routes>
-        </Router>
       </div>
 
 
