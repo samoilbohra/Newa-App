@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/samoilbohra/News-App/static/css/main.131591d8.css",
+    "main.js": "/samoilbohra/News-App/static/js/main.7b99592e.js",
+    "static/js/787.4c026eef.chunk.js": "/samoilbohra/News-App/static/js/787.4c026eef.chunk.js",
+    "index.html": "/samoilbohra/News-App/index.html",
+    "main.131591d8.css.map": "/samoilbohra/News-App/static/css/main.131591d8.css.map",
+    "main.7b99592e.js.map": "/samoilbohra/News-App/static/js/main.7b99592e.js.map",
+    "787.4c026eef.chunk.js.map": "/samoilbohra/News-App/static/js/787.4c026eef.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.131591d8.css",
+    "static/js/main.7b99592e.js"
+  ]
+}
