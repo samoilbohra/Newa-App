@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/technology" element={<NewsComponent key={"technology"} pageSize={9} country={"in"} category="technology" />} />
 
 
-
+{/* Hello this is a new commit  */}
           </Routes>
         </Router>
       </div>
