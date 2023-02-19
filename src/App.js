@@ -11,7 +11,7 @@ export default function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
+            <Route path="/News-App/" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
             <Route path="/about" element={<NewsComponent key={"general"} pageSize={9} country={"in"} category="general" />} />
             <Route path="business" element={<NewsComponent key={"business"} pageSize={9} country={"in"} category="business" />} />
             <Route path="/entertainment" element={<NewsComponent key={"entertainment"} pageSize={9} country={"in"} category="entertainment" />} />
