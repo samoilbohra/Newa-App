@@ -30,7 +30,7 @@ export default function NewsComponent(props) {
    
     // uPdate news by fetchung data
   const   updatenews = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${ page}&pagesize=21`
+        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`
        setLoading(true);
         let data = await fetch(url);
         let parsedData = await data.json()
