@@ -109,14 +109,14 @@ export default function NewsComponent(props) {
 
 
                 <InfiniteScroll
-                    dataLength={ articles.length}
+                    dataLength={articles && articles.length}
                     next={fetchMoreData}
-                    hasMore={ articles.length !==  totalArticles}
+                    hasMore={ articles && articles.length !==  totalArticles}
                     loader={ <Loading />}
                 >
                     { <div className='row my-3  '>
                         {
-                             articles.map((item) => {
+                            articles &&  articles.map((item) => {
                                 return (
                                     <div className=' col-md-3 col-sm-4  mx-3 ' key={item.url} >
                                         <NewItem title={item.title} description={item.description} imageUrl={item.urlToImage} newsUrl={item.url} date={item.publishedAt} author={item.author}  />
