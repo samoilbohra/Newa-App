@@ -17,17 +17,7 @@ export default function NewsComponent(props) {
   
   
 
-//  const   async componentDidMount =()=> {
-//         // let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${ page}&pagesize=${props.pageSize}`
-//         // this.setState({ loading: true });
 
-//         // let data = await fetch(url);
-//         // let parsedData = await data.json()
-//         // this.setState({ articles: parsedData.articles, loading: false })
-//         // console.log(totalArticles);
-//         this.updatenews();
-//     }
-   
     // uPdate news by fetchung data
   const   updatenews = async () => {
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`
@@ -56,51 +46,7 @@ export default function NewsComponent(props) {
        setArticles(articles.concat(parsedData))
         
     };
-    // handling next and previous click button
-//    const handlenextclick = async () => {
 
-
-//         // let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${ page + 1}&pagesize=21`
-//         // this.setState({ loading: true });
-//         // let data = await fetch(url);
-//         // let parsedData = await data.json()
-//         // this.setState({ articles: parsedData.articles })
-
-//         // this.setState({
-//         //     page:  page + 1
-//         //     , loading: false
-//         // })
-//         setPage(page+1);
-        
-//         updatenews();
-//     }
-//     const handleprevclick = async () => {
-//         // let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${ page - 1}&pagesize=21`
-//         // this.setState({ loading: true });
-
-//         // let data = await fetch(url);
-//         // let parsedData = await data.json()
-//         // this.setState({ articles: parsedData.articles })
-
-//         // this.setState({
-//         //     page:  page - 1
-//         //     , loading: false
-//         // })
-//         setPage(page-1);
-
-//         // this.setState({
-//         //     page:  page - 1
-
-//         // })
-
-//         updatenews();
-
-
-//     }
-
-   
-
- 
 
         return (
             <div className='container my-3 '>
@@ -125,10 +71,7 @@ export default function NewsComponent(props) {
                             })}
                     </div>}
                 </InfiniteScroll>
-                {/* <div className='container d-flex justify-content-between'>
-                    <button disabled={ page == 1} type="button" className="btn btn-primary" onClick={this.handleprevclick}> &larr; prev </button>
-                    <button disabled={ totalArticles / 21 <  page} type="button" className="btn btn-primary" onClick={this.handlenextclick}>next   &rarr; </button>
-                </div> */}
+              
             </div>
         )
     
