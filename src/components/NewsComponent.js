@@ -13,12 +13,12 @@ export default function NewsComponent(props) {
  const [loading , setLoading] = useState(true);
  const [page , setPage] = useState(1);
  const [totalArticles , setTotalArticles] = useState(0);
-   
-  
-  
 
+<<<<<<< HEAD
 
     // uPdate news by fetchung data
+=======
+>>>>>>> f4972ef (final Commit)
   const   updatenews = async () => {
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`
        setLoading(true);
@@ -46,7 +46,11 @@ export default function NewsComponent(props) {
        setArticles(articles.concat(parsedData))
         
     };
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> f4972ef (final Commit)
 
         return (
             <div className='container my-3 '>
@@ -55,20 +59,29 @@ export default function NewsComponent(props) {
 
 
                 <InfiniteScroll
+<<<<<<< HEAD
                     dataLength={articles && articles.length}
+=======
+                    dataLength={ articles && articles.length}
+>>>>>>> f4972ef (final Commit)
                     next={fetchMoreData}
                     hasMore={ articles && articles.length !==  totalArticles}
                     loader={ <Loading />}
                 >
                     { <div className='row my-3  '>
+<<<<<<< HEAD
                         {
                             articles &&  articles.map((item) => {
+=======
+                     { articles ?   (
+                           articles &&   articles.map((item) => {
+>>>>>>> f4972ef (final Commit)
                                 return (
                                     <div className=' col-md-3 col-sm-4  mx-3 ' key={item.url} >
                                         <NewItem title={item.title} description={item.description} imageUrl={item.urlToImage} newsUrl={item.url} date={item.publishedAt} author={item.author}  />
                                     </div>
                                 )
-                            })}
+                            })) : <div> No Articles Found Related to given Topic</div>}
                     </div>}
                 </InfiniteScroll>
               
