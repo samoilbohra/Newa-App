@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export default function NewItem(props) {
 
-   
+
+
     let { title, description, imageUrl, newsUrl, date, author, source } = props;
 
     return (
