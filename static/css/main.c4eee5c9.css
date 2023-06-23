@@ -1,0 +1,2 @@
+.loading{background-color:#fff;display:grid;height:100vh;max-width:100%;place-items:center;width:100vw}.loading>div{-webkit-animation:loadingState .7s linear infinite;animation:loadingState .7s linear infinite;border-bottom:5px solid #050505;border-radius:50%;height:7vmax;width:7vmax}@-webkit-keyframes loadingState{to{-webkit-transform:rotate(-1turn);transform:rotate(-1turn)}}@keyframes loadingState{to{-webkit-transform:rotate(-1turn);transform:rotate(-1turn)}}
+/*# sourceMappingURL=main.c4eee5c9.css.map*/
