@@ -1,103 +1,83 @@
-import React, {  useEffect, useState } from 'react'
-import NewItem from './NewItem'
-import Loading from './loading.js'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
+import NewItem from './NewItem';
+import Loading from './loading.js';
+import PropTypes from 'prop-types';
 import InfiniteScroll from "react-infinite-scroll-component";
 
-
-
-
 export default function NewsComponent(props) {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalArticles, setTotalArticles] = useState(0);
 
- const [articles , setArticles]  = useState([]);
- const [loading , setLoading] = useState(true);
- const [page , setPage] = useState(1);
- const [totalArticles , setTotalArticles] = useState(0);
+  // Update news by fetching data
+  const updateNews = async () => {
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`;
+    setLoading(true);
+    let data = await fetch(url);
+    let parsedData = await data.json();
 
-<<<<<<< HEAD
+    setArticles(parsedData.articles);
+    setLoading(false);
+    setTotalArticles(parsedData.totalResults);
+  };
 
-    // uPdate news by fetchung data
-=======
->>>>>>> f4972ef (final Commit)
-  const   updatenews = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`
-       setLoading(true);
-        let data = await fetch(url);
-        let parsedData = await data.json()
+  useEffect(() => {
+    updateNews();
+  }, []);
 
+  const fetchMoreData = async () => {
+    setPage(page + 1);
 
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${page}&pagesize=21`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
 
-        setArticles(parsedData.articles);
-        setLoading (false);
-        setTotalArticles(parsedData.totalResults);
-       
-    }
-    useEffect(()=>
-    {
-      updatenews();
-    } , []);
-   const  fetchMoreData = async() => {
-          setPage(page+1)
-        
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=c56fe5f10ae3411a9f61f9ef2ff6e0d8&page=${ page}&pagesize=21`
-       
-        let data = await fetch(url);
-        let parsedData = await data.json()
-       setArticles(articles.concat(parsedData))
-        
-    };
-<<<<<<< HEAD
+    setArticles(articles.concat(parsedData.articles));
+  };
 
-=======
-   
->>>>>>> f4972ef (final Commit)
+  return (
+    <div className='container my-3'>
+      <h2 className='text-center' style={{ marginTop: '100px', marginLeft: '20px' }}>NEWS APP's - TOP HEADLINES {props.category}</h2>
+      {loading && <Loading />}
 
-        return (
-            <div className='container my-3 '>
-                <h2 className='text-centre' style={{ marginTop:'100px' , marginLeft: '20px'  }}> NEWS APP's - TOP HEADLINES {props.category}</h2>
-                { loading && <Loading />}
-
-
-                <InfiniteScroll
-<<<<<<< HEAD
-                    dataLength={articles && articles.length}
-=======
-                    dataLength={ articles && articles.length}
->>>>>>> f4972ef (final Commit)
-                    next={fetchMoreData}
-                    hasMore={ articles && articles.length !==  totalArticles}
-                    loader={ <Loading />}
-                >
-                    { <div className='row my-3  '>
-<<<<<<< HEAD
-                        {
-                            articles &&  articles.map((item) => {
-=======
-                     { articles ?   (
-                           articles &&   articles.map((item) => {
->>>>>>> f4972ef (final Commit)
-                                return (
-                                    <div className=' col-md-3 col-sm-4  mx-3 ' key={item.url} >
-                                        <NewItem title={item.title} description={item.description} imageUrl={item.urlToImage} newsUrl={item.url} date={item.publishedAt} author={item.author}  />
-                                    </div>
-                                )
-                            })) : <div> No Articles Found Related to given Topic</div>}
-                    </div>}
-                </InfiniteScroll>
-              
-            </div>
-        )
-    
+      <InfiniteScroll
+        dataLength={articles && articles.length}
+        next={fetchMoreData}
+        hasMore={articles && articles.length !== totalArticles}
+        loader={<Loading />}
+      >
+        <div className='row my-3'>
+          {articles && articles.length > 0 ? (
+            articles.map((item) => (
+              <div className='col-md-3 col-sm-4 mx-3' key={item.url}>
+                <NewItem
+                  title={item.title}
+                  description={item.description}
+                  imageUrl={item.urlToImage}
+                  newsUrl={item.url}
+                  date={item.publishedAt}
+                  author={item.author}
+                />
+              </div>
+            ))
+          ) : (
+            <div>No Articles Found Related to the Given Topic</div>
+          )}
+        </div>
+      </InfiniteScroll>
+    </div>
+  );
 }
+
 NewsComponent.defaultProps = {
-    pageSize: 9,
-    country: 'in',
-    category: 'general'
-}
+  pageSize: 9,
+  country: 'in',
+  category: 'general'
+};
+
 NewsComponent.propTypes = {
-    pageSize: PropTypes.number,
-    country: PropTypes.string,
-    category: PropTypes.string
-
-
-}
+  pageSize: PropTypes.number,
+  country: PropTypes.string,
+  category: PropTypes.string
+};
